@@ -86,7 +86,14 @@ class TaskManager {
     // 5. Filter tasks by category
     public List<Task> filterByCategory(String category) {
         // TODO: Implement filtering logic
-        return new ArrayList<>();
+        // return new ArrayList<>();
+    	List<Task> filteredTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getCategory().equalsIgnoreCase(category)) {
+                filteredTasks.add(task);
+            }
+        }
+        return filteredTasks; 
     }
 
     // 6. Find the highest-priority unfinished task
@@ -118,9 +125,18 @@ public class SI2025Lab1Main {
         manager.addTask("Write report", Priority.HIGH, "Work");
         manager.addTask("Submit assignment", Priority.MEDIUM, "School");
         manager.addTask("Buy groceries", Priority.LOW, "Personal");
+	manager.addTask("Call client", Priority.HIGH, "Work");
 
         // MISSING: Calls to the new methods that will be implemented
-
+	System.out.println("All tasks:")        
         manager.printTasks();
+	
+	String categoryToFilter = "Work";
+	List<Task> workTasks = manager.filterByCategory(categoryToFilter);
+    
+    	System.out.println("\nTasks in category '" + categoryToFilter + "':");
+    	for (Task task : workTasks) {
+            System.out.println(task);
+        }
     }
 }
