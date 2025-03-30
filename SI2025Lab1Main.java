@@ -88,6 +88,9 @@ class TaskManager {
     // 4. Sort tasks by priority
     public void sortTasksByPriority() {
         // TODO: Implement sorting by priority logic
+    	tasks.sort((task1, task2) -> {
+        return task2.getPriority().compareTo(task1.getPriority());
+     });
     }
 
     // 5. Filter tasks by category
@@ -135,7 +138,8 @@ public class SI2025Lab1Main {
 	manager.addTask("Call client", Priority.HIGH, "Work");
 
         // MISSING: Calls to the new methods that will be implemented
-	System.out.println("All tasks:")        
+
+	System.out.println("All tasks:");        
         manager.printTasks();
 	
 	String categoryToFilter = "Work";
@@ -145,5 +149,15 @@ public class SI2025Lab1Main {
     	for (Task task : workTasks) {
             System.out.println(task);
         }
+
+	System.out.println("Before sorting:");
+        manager.printTasks();
+	
+	manager.sortTasksByPriority();
+	
+	System.out.println("After sorting:");
+	manager.printTasks();	
+	
+
     }
 }
