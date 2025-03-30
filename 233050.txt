@@ -1,0 +1,79 @@
+ВТОР ДЕЛ
+(13-26)
+
+13. git fetch origin (за да се креираат tracker гранки за 3-те гранки)
+14. git checkout 3-find-all-completed-tasks
+    (на истиот начин се префрлам и на останатите две гранки подоцна)
+
+15. nano SI2025MainLab1.java
+
+    (во продолжение се имплементираните функции)
+    -> за find all completed tasks
+    List<Task> completed = new ArrayList<>();
+    for (Task task : tasks) {
+        if (task.isCompleted()) {
+            completed.add(task);
+        }
+    }
+    return completed;
+    ----------------
+    -> за sort tasks by priority
+    public void sortTasksByPriority() {
+    tasks.sort((task1, task2) -> {
+        return task2.getPriority().compareTo(task1.getPriority());
+    });
+    --> во Main
+    System.out.println("Before sorting:");
+    manager.printTasks();
+    
+    manager.sortTasksByPriority();
+    
+    System.out.println("\nAfter sorting:");
+    manager.printTasks();
+   ------------------
+   -> за filter tasks by category
+    public List<Task> filterByCategory(String category) {
+     List<Task> filteredTasks = new ArrayList<>();
+     for (Task task : tasks) {
+        if (task.getCategory().equalsIgnoreCase(category)) {
+            filteredTasks.add(task);
+        }
+     }
+     return filteredTasks;
+  }
+  -> Во Main
+  manager.addTask("Call client", Priority.HIGH, "Work");
+  System.out.println("All tasks:");
+    manager.printTasks();
+
+    String categoryToFilter = "Work";
+    List<Task> workTasks = manager.filterByCategory(categoryToFilter);
+    
+    System.out.println("\nTasks in category '" + categoryToFilter + "':");
+    for (Task task : workTasks) {
+        System.out.println(task);
+    }
+}
+-----------------------------------
+
+
+16. git add SI2025Lab1Main.java
+    git commit -m "Implement getCompletedTasks() method"
+17. git push origin 3-find-all-completed-tasks (синхронизација на локалната гранка со гранката на remote репозиториумот)
+18. оди на github->автоматски github покажува порака -> Compare & pull request -> кликни
+20. не можев да направам approve. Github има забрана, не дозволува тој што направил pull request на issue, истиот да направи approve.
+    ги споив find all completed tasks, filter tasks by category
+21. И двата issues се преместени автоматски во колоната Done
+22. git checkout master
+    git pull origin master
+    git merge 5-sort-tasks-by-priority
+
+- во овој чекор се случи конфликт при извршување на наредбата. Конфликтот беше во датотеката SI2025Lab1Main.java. Конфликтот го решив на тој начин што ја отворив датотеката, и според маркерите ја пронајдов грешката (беше испуштена ;), ја додадов, ги избришав маркерите, и на тој начин конфликтот се реши. Ја зачував датотеката и ја повикав командата git push origin master.
+
+23. git push origin master
+24. Pull request за таа гранка е затворен, и соодветниот github issue автоматски е преместен во колоната DONE
+25. git log --oneline --all > logs.txt
+    nano 233050.txt
+    git add logs.txt 233050.txt
+    git commit -m "Final commit"
+26. git push origin master

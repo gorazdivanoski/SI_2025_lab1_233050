@@ -1,0 +1,15 @@
+*   4b9b2f7 Merge branch 5-sort-tasks-by-priority
+|\  
+| * a41b75c Implement sortTasksByPriority() method
+* |   3d7988c Merge pull request #11 from gorazdivanoski/3-find-all-completed-tasks
+|\ \  
+| * | 505d1f1 Implement getCompletedTasks() method
+| |/  
+* |   52d7ae2 Merge pull request #13 from gorazdivanoski/6-filter-tasks-by-category
+|\ \  
+| |/  
+|/|   
+| * 60f902c Implement filterByCategory() method
+|/  
+* 9171883 Add starter code
+* 3ffa1d9 Initial commit
